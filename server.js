@@ -1,7 +1,7 @@
 //==============================================================================================
 // dependencies setup
 
-const PORT = process.env.PORT || 8099;
+
 
 const express = require('express');
 const session = require('express-session');
@@ -39,6 +39,8 @@ const { type } = require('os');
 // environment variables setup
 
 dotenv.config(); // Load environment variables from .env file
+
+const PORT = process.env.PORT;
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
