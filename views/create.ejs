@@ -1,0 +1,106 @@
+<!-- create.ejs -->
+<html>
+    <head>
+        <style>
+            /* General reset and font style */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f9f9f9;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                color: #333;
+            }
+
+            /* Container styling */
+            .container {
+                background-color: #ffffff;
+                width: 400px;
+                padding: 20px 40px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            h1, h2 {
+                color: #4a90e2;
+                font-weight: 600;
+            }
+
+            hr {
+                border: none;
+                border-top: 2px solid #eee;
+                margin: 20px 0;
+            }
+
+            p {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 20px;
+            }
+
+            /* Form styling */
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            input[type="text"], input[type="file"], input[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+
+            input[type="text"]:focus, input[type="file"]:focus {
+                outline: none;
+                border-color: #4a90e2;
+            }
+
+            input[type="submit"] {
+                background-color: #4a90e2;
+                color: #fff;
+                cursor: pointer;
+                border: none;
+                font-weight: bold;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #357ab8;
+            }
+
+            a {
+                color: #4a90e2;
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome, <%= user.name %></h1>
+            <hr />
+            <p>You logged in through <b><%= user.type %></b>, user ID is <%= user.id %></p>
+            <h2>Upload New Audio</h2>
+            <form action="/create" method="POST" enctype="multipart/form-data">
+                <label>Title: <input name="title" type="text" required></label>
+                <label>Artist: <input name="artist" type="text" required></label>
+                <label>Album: <input name="album" type="text"></label>
+                <label>Genre: <input name="genre" type="text"></label>
+                <label>Audio File: <input type="file" name="audio_file" accept="audio/*" required></label>
+                <label>Cover Image: <input type="file" name="cover_image" accept="image/*"></label>
+                <input type="submit" value="Upload">
+            </form>
+            <p><a href="/">Back to List</a></p>
+        </div>
+    </body>
+</html>

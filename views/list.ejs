@@ -1,0 +1,119 @@
+<html>
+<head>
+    <style>
+        /* Body and container styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #eee;
+            margin: 15px 0;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f0f4f8;
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #e2eaf1;
+        }
+
+        a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .logout-btn {
+            background-color: #e74c3c;
+        }
+
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, <%= user.name %></h1>
+        <hr />
+        <p>You logged in through <b><%= user.type %></b>, user ID is <%= user.id %></p>
+        <h2>Audio Files (<%= nAudios %>)</h2>
+        <ul>
+            <% for (var audio of audios) { %>
+            <li>
+                <a href="/details?_id=<%= audio._id %>">
+                    <%= audio.title %> - <%= audio.artist %>
+                </a>
+                <span>(<%= audio.album || 'No Album' %> | <%= audio.genre || 'No Genre' %>)</span>
+            </li>
+            <% } %>
+        </ul>
+        <div style="text-align: center;">
+            <a href='/create' class="btn">Upload New Audio</a>
+            <a href='/logout' class="btn logout-btn">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

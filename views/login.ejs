@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        /* Body and container styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+
+        .login-container {
+            background-color: #fff;
+            width: 350px;
+            padding: 40px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Heading */
+        h2 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        /* Login buttons */
+        .login-button {
+            display: block;
+            width: auto;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .facebook-btn {
+            background-color: #3b5998;
+        }
+        .facebook-btn:hover {
+            background-color: #2d4373;
+        }
+
+        .google-btn {
+            background-color: #db4437;
+        }
+        .google-btn:hover {
+            background-color: #b9372d;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Choose Login Method</h2>
+        <a href="/auth/facebook" class="login-button facebook-btn">Login with Facebook</a>
+        <a href="/auth/google" class="login-button google-btn">Login with Google</a>
+    </div>
+</body>
+</html>

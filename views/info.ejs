@@ -1,0 +1,79 @@
+<!-- info.ejs -->
+<html>
+<head>
+    <style>
+        /* Body and container styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 400px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #4a90e2;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 15px 0;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .message {
+            margin: 20px 0;
+            font-weight: bold;
+            color: #4CAF50;
+            font-size: 16px;
+        }
+
+        /* Back to list link */
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4a90e2;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #357ab8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, <%= user.name %></h1>
+        <hr />
+        <p>You logged in through <b><%= user.type %></b>, user ID is <%= user.id %></p>
+        <div class="message">
+            <b><%= message %></b>
+        </div>
+        <a href="/" class="back-link">Back to List</a>
+    </div>
+</body>
+</html>

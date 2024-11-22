@@ -1,0 +1,146 @@
+<!-- edit.ejs -->
+<html>
+<head>
+    <style>
+        /* Body and container styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 15px 0;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* Form styling */
+        form {
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #357ab8;
+        }
+
+        /* Image styling */
+        img {
+            max-width: 200px;
+            max-height: 200px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, <%= user.name %></h1>
+        <hr />
+        <p>You logged in through <b><%= user.type %></b>, user ID is <%= user.id %></p>
+        <h2>Edit Audio</h2>
+        <form action="/update" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_id" value="<%= audio._id %>">
+
+            <label for="title">Title:</label>
+            <input type="text" name="title" value="<%= audio.title %>" required><br>
+
+            <label for="artist">Artist:</label>
+            <input type="text" name="artist" value="<%= audio.artist %>" required><br>
+
+            <label for="album">Album:</label>
+            <input type="text" name="album" value="<%= audio.album || '' %>"><br>
+
+            <label for="genre">Genre:</label>
+            <input type="text" name="genre" value="<%= audio.genre || '' %>"><br>
+            
+            <% if (audio.file_name) { %>
+                <p>Current Audio File: <%= audio.file_name %></p>
+            <% } %>
+            <label for="audio_file">New Audio File (optional):</label>
+            <input type="file" name="audio_file" accept="audio/*"><br>
+            
+            <% if (audio.cover_image) { %>
+                <p>Current Cover Image:</p>
+                <img src="data:image/jpeg;base64, <%= audio.cover_image %>" alt="Cover Image"><br>
+            <% } %>
+            <label for="cover_image">New Cover Image (optional):</label>
+            <input type="file" name="cover_image" accept="image/*"><br>
+            
+            <input type="submit" value="Update">
+        </form>
+        <a href="/details?_id=<%= audio._id %>" class="back-link">Back to Details</a>
+    </div>
+</body>
+</html>
